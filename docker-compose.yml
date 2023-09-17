@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  picsorter:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/root
+
+    tty:
+      true
+
+    working_dir: /root
