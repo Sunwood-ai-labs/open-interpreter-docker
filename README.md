@@ -1,5 +1,11 @@
 # open-interpreter-docker
 
+解説ブログはこちら
+
+https://hamaruki.com/can-open-interpreters-be-installed-on-office-pcs/
+
+
+
 ```
 docker-compose exec open-interpreter /bin/bash
 ```
