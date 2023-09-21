@@ -14,11 +14,13 @@ docker-compose exec open-interpreter /bin/bash
 interpreter
 ```
 
+```
+interpreter --debug
+```
 
 ## Q1
 
-`from sklearn.datasets import fetch_california_housing`これを用いてカリフォルニア住宅価格のデータセットを用いて住宅価格の回帰予測をstep-by-stepで行って
-
+`from sklearn.datasets import fetch_california_housing`これを用いてカリフォルニア住宅価格のデータセットを用いて住宅価格の回帰予測と学習データとテストデータの推定値の誤差の計算をstep-by-stepで行って
 
 ### A1
 

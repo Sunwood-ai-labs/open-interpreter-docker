@@ -12,3 +12,9 @@ services:
       true
 
     working_dir: /root
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
