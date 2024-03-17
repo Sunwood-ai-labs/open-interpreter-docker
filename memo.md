@@ -14,8 +14,14 @@ interpreter --model huggingface/TheBloke/Mistral-7B-Instruct-v0.1-GGUF --local -
 interpreter --model TheBloke/Mistral-7B-Instruct-v0.1-GGUF --local --auto_run
 interpreter --model TheBloke/Mistral-7B-Instruct-v0.1-GGUF --local --auto_run
 
+interpreter --model huggingface/TheBloke/Mistral-7B-Instruct-v0.1-GGUF --local -y --api_base http://host.docker.internal:1234/v1/chat/completions
+interpreter --model huggingface/TheBloke/Mistral-7B-Instruct-v0.1-GGUF --local -y --api_base http://localhost:1234/v1
+interpreter --local -y --api_base http://host.docker.internal:1234/v1/chat/completions
+interpreter --local -y --api_base http://host.docker.internal:1234/v1
 
-host.docker.internal
+http://host.docker.internal:1234/v1/chat/completions
+host.docker.internal 
+http://host.docker.internal:1234/v1
 
 curl http://host.docker.internal:1234/v1/chat/completions \
 -H "Content-Type: application/json" \
