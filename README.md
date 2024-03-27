@@ -1,670 +1,93 @@
-# open-interpreter-docker
-
-解説ブログはこちら
-
-https://hamaruki.com/can-open-interpreters-be-installed-on-office-pcs/
 
 
+![](docs/icon.png)
 
-```
-docker-compose exec open-interpreter /bin/bash
-```
+# Open Interpreter Docker
 
-```
-interpreter
-```
+## 概要
 
-```
-interpreter --debug
-```
+Open Interpreter は、LLM (大規模言語モデル) を使用してローカル環境でコード (Python、JavaScript、Shell など) を実行できるツールです。インストール後、`$ interpreter` コマンドを実行すると、ターミナルでChatGPTのようなインターフェースを通じて Open Interpreter とチャットできます。
 
-## Q1
+これにより、コンピュータの汎用的な機能に自然言語インターフェースが提供されます:
 
-`from sklearn.datasets import fetch_california_housing`これを用いてカリフォルニア住宅価格のデータセットを用いて住宅価格の回帰予測と学習データとテストデータの推定値の誤差の計算をstep-by-stepで行って
+- 写真、ビデオ、PDFなどの作成と編集
+- Chrome ブラウザを制御して調査を実行
+- 大規模なデータセットのプロット、クリーニング、分析
+- ...など
 
-### A1
+⚠️ 注意: 実行前にコードの承認を求められます。
 
-```
+## セットアップ
 
-C:\Prj\open-interpreter-docker>docker-compose up -d
-[+] Running 1/1
- ✔ Container open-interpreter-docker-open-interpreter-1  Started   0.0s
+1. リポジトリをクローンします:
 
-C:\Prj\open-interpreter-docker>docker-compose exec open-interpreter /bin/bash
-root@465aaa3eb215:~# interpreter
-
-●
-
-Welcome to Open Interpreter.
-
-────────────────────────────────────────────────────────────────────────
-
-▌ OpenAI API key not found
-
-To use GPT-4 (recommended) please provide an OpenAI API key.
-
-To use Code-Llama (free but less capable) press enter.
-
-────────────────────────────────────────────────────────────────────────
-
-OpenAI API key:
-
-▌ Switching to Code-Llama...
-
-Tip: Run interpreter --local to automatically use Code-Llama.
-
-────────────────────────────────────────────────────────────────────────
-
-Open Interpreter will use Code Llama for local execution. Use your arrowkeys to set up the model.
-
-[?] Parameter count (smaller is faster, larger is more capable): 7B
- > 7B
-   13B
-   34B
-
-[?] Quality (smaller is faster, larger is more capable): Small | Size: 2[?] Quality (smaller is faster, larger is more capable): Medium | Size: [?] Quality (smaller is faster, larger is more capable): Large | Size: 6.7 GB, Estimated RAM usage: 9.2 GB RAM usage: 5.1 GB
-   Small | Size: 2.6 GB, Estimated RAM usage: 5.1 GB
-   Medium | Size: 3.8 GB, Estimated RAM usage: 6.3 GB
- > Large | Size: 6.7 GB, Estimated RAM usage: 9.2 GB
-   See More
-
-[?] Use GPU? (Large models might crash on GPU, but will run more qu...: n
-
-Model found at /root/.local/share/Open
-Interpreter/models/codellama-7b-instruct.Q8_0.gguf
-
-▌ Model set to TheBloke/CodeLlama-7B-Instruct-GGUF
-
-Open Interpreter will require approval before running code. Use
-interpreter -y to bypass this.
-
-Press CTRL-C to exit.
-
-> `from sklearn.datasets import fetch_california_housing`これを用いてカ
-リフォルニア住宅価格のデータセットを用いて住宅価格の回帰予測を行って
-
-
-
-
-  from sklearn.datasets import fetch_california_housing
-
-
-  Would you like to run this code? (y/n)
-
-  y
-
-
-  from sklearn.datasets import fetch_california_housing
-
-
-
-  I will now proceed to run the next line of code.
-
-
-
-  from sklearn.model_selection import train_test_split
-
-
-  Would you like to run this code? (y/n)
-
-  y
-
-
-  from sklearn.model_selection import train_test_split
-
+```bash
+git clone https://github.com/Sunwood-ai-labs/open-interpreter-docker.git
+cd open-interpreter-docker
 ```
 
+2. Docker Compose を使用して Open Interpreter をビルド・起動します:
 
-
+```bash
+docker-compose up --build 
 ```
 
-Microsoft Windows [Version 10.0.22621.2283]
-(c) Microsoft Corporation. All rights reserved.
-
-C:\Users\solar>cd C:\Prj\open-interpreter-docker
-
-C:\Prj\open-interpreter-docker>docker-compose up -d
-[+] Running 1/1
- ✔ Container open-interpreter-docker-open-interpreter-1  Started                                                                    0.0s
-
-C:\Prj\open-interpreter-docker>docker-compose exec open-interpreter /bin/bash
-root@465aaa3eb215:~# ls
-Dockerfile  README.md  docker-compose.yml  scikit_learn_data
-root@465aaa3eb215:~# interpreter
-
-●
-
-Welcome to Open Interpreter.
-
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-▌ OpenAI API key not found
-
-To use GPT-4 (recommended) please provide an OpenAI API key.
-
-To use Code-Llama (free but less capable) press enter.
-
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-OpenAI API key:
-
-▌ Switching to Code-Llama...
-
-Tip: Run interpreter --local to automatically use Code-Llama.
-
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-Open Interpreter will use Code Llama for local execution. Use your arrow keys to set up the model.
-
-[?] Parameter count (smaller is faster, larger is more capable): 7B
- > 7B
-   13B
-   34B
-
-[?] Quality (smaller is faster, larger is more capable): Medium | Size: 3.8 GB, Estimated RAM usage: 6.3 GB
-   Small | Size: 2.6 GB, Estimated RAM usage: 5.1 GB
- > Medium | Size: 3.8 GB, Estimated RAM usage: 6.3 GB
-   Large | Size: 6.7 GB, Estimated RAM usage: 9.2 GB
-   See More
-
-[?] Use GPU? (Large models might crash on GPU, but will run more quickly) (Y/n): n
-
-Model found at /root/.local/share/Open Interpreter/models/codellama-7b-instruct.Q4_K_M.gguf
-
-▌ Model set to TheBloke/CodeLlama-7B-Instruct-GGUF
-
-Open Interpreter will require approval before running code. Use interpreter -y to bypass this.
-
-Press CTRL-C to exit.
-
-> `from sklearn.datasets import fetch_california_housing`これを用いてカリフォルニア住宅価格のデータセットを用いて住宅価格の回帰予測を行って
-
-
-
-
-  from sklearn.datasets import fetch_california_housing
-
-
-  Would you like to run this code? (y/n)
-
-  y
-
-
-  from sklearn.datasets import fetch_california_housing
-
-
-
-  I'll ask you what you would like to do next. Would you like me to run another piece of code or provide more information about the
-  California Housing dataset?
-
->
-Exception in thread Thread-2 (save_and_display_stream):
-Traceback (most recent call last):
-  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
-root@465aaa3eb215:~# interpreter
-
-●
-
-Welcome to Open Interpreter.
-
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-▌ OpenAI API key not found
-
-To use GPT-4 (recommended) please provide an OpenAI API key.
-
-To use Code-Llama (free but less capable) press enter.
-
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-OpenAI API key:
-
-▌ Switching to Code-Llama...
-
-Tip: Run interpreter --local to automatically use Code-Llama.
-
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-Open Interpreter will use Code Llama for local execution. Use your arrow keys to set up the model.
-
-[?] Parameter count (smaller is faster, larger is more capable): 7B
- > 7B
-   13B
-   34B
-
-[?] Quality (smaller is faster, larger is more capable): Medium | Size: 3.8 GB, Estimated RAM usage: 6.3 GB
-   Small | Size: 2.6 GB, Estimated RAM usage: 5.1 GB
- > Medium | Size: 3.8 GB, Estimated RAM usage: 6.3 GB
-   Large | Size: 6.7 GB, Estimated RAM usage: 9.2 GB
-   See More
-
-[?] Use GPU? (Large models might crash on GPU, but will run more quickly) (Y/n): Y
-
-Model found at /root/.local/share/Open Interpreter/models/codellama-7b-instruct.Q4_K_M.gguf
-
-▌ Model set to TheBloke/CodeLlama-7B-Instruct-GGUF
-
-Open Interpreter will require approval before running code. Use interpreter -y to bypass this.
-
-Press CTRL-C to exit.
-
-> `from sklearn.datasets import fetch_california_housing`これを用いてカリフォルニア住宅価格のデータセットを用いて住宅価格の回帰予測をstep-by-stepで行って
-
-
-
-
-  from sklearn.datasets import fetch_california_housing
-
-
-  Would you like to run this code? (y/n)
-
-  y
-
-
-  from sklearn.datasets import fetch_california_housing
-
-
-
-  I will now proceed to load the California Housing dataset using the fetch_california_housing function from scikit-learn.
-
-
-
-  from sklearn.datasets import fetch_california_housing
-  housing = fetch_california_housing()
-
-
-  Would you like to run this code? (y/n)
-
-  y
-
-
-  from sklearn.datasets import fetch_california_housing
-  housing = fetch_california_housing()
-
-
-
-  I will now proceed to explore the California Housing dataset.
-
-
-
-  from sklearn.datasets import fetch_california_housing
-  housing = fetch_california_housing()
-  print(housing.DESCR)
-
-
-  Would you like to run this code? (y/n)
-
-  y
-
-
-
-  from sklearn.datasets import fetch_california_housing
-
-  from sklearn.datasets import fetch_california_housing
-
-  from sklearn.datasets import fetch_california_housing
-  housing = fetch_california_housing()
-
-  from sklearn.datasets import fetch_california_housing
-  housing = fetch_california_housing()
-  print(housing.DESCR)█
-
-  from sklearn.datasets import fetch_california_housing
-  housing = fetch_california_housing()
-  print(housing.DESCR)█
-
-
-  from sklearn.datasets import fetch_california_housing
-  housing = fetch_california_housing()
-  print(housing.DESCR)█
-
-
-
-  from sklearn.datasets import fetch_california_housing
-  housing = fetch_california_housing()
-  print(housing.DESCR)█
-
-
-
-  from sklearn.datasets import fetch_california_housing
-  housing = fetch_california_housing()
-  print(housing.DESCR)█
-
-
-  .. _california_housing_dataset:
-
-  from sklearn.datasets import fetch_california_housing
-  housing = fetch_california_housing()
-  print(housing.DESCR)█
-
-
-  .. _california_housing_dataset:
-  California Housing dataset
-
-  from sklearn.datasets import fetch_california_housing
-  housing = fetch_california_housing()
-  print(housing.DESCR)█
-
-
-  .. _california_housing_dataset:
-  California Housing dataset
-  --------------------------
-
-  from sklearn.datasets import fetch_california_housing
-  housing = fetch_california_housing()
-  print(housing.DESCR)█
-
-
-  .. _california_housing_dataset:
-  California Housing dataset
-  --------------------------
-  **Data Set Characteristics:**
-
-  from sklearn.datasets import fetch_california_housing
-  housing = fetch_california_housing()
-  print(housing.DESCR)█
-
-
-  .. _california_housing_dataset:
-  California Housing dataset
-  --------------------------
-  **Data Set Characteristics:**
-
-  from sklearn.datasets import fetch_california_housing
-  housing = fetch_california_housing()
-  print(housing.DESCR)█
-
-
-  .. _california_housing_dataset:
-  California Housing dataset
-  --------------------------
-  **Data Set Characteristics:**
-  :Number of Instances: 20640
-
-  from sklearn.datasets import fetch_california_housing
-  housing = fetch_california_housing()
-  print(housing.DESCR)█
-
-
-  .. _california_housing_dataset:
-  California Housing dataset
-  --------------------------
-  **Data Set Characteristics:**
-  :Number of Instances: 20640
-  :Number of Attributes: 8 numeric, predictive attributes and the target
-
-  from sklearn.datasets import fetch_california_housing
-  housing = fetch_california_housing()
-  print(housing.DESCR)█
-
-
-  .. _california_housing_dataset:
-  California Housing dataset
-  --------------------------
-  **Data Set Characteristics:**
-  :Number of Instances: 20640
-  :Number of Attributes: 8 numeric, predictive attributes and the target
-
-  from sklearn.datasets import fetch_california_housing
-  housing = fetch_california_housing()
-  print(housing.DESCR)█
-
-
-  .. _california_housing_dataset:
-  California Housing dataset
-  --------------------------
-  **Data Set Characteristics:**
-  :Number of Instances: 20640
-  :Number of Attributes: 8 numeric, predictive attributes and the target
-  :Attribute Information:
-
-  from sklearn.datasets import fetch_california_housing
-  housing = fetch_california_housing()
-  print(housing.DESCR)█
-
-
-  .. _california_housing_dataset:
-  California Housing dataset
-  --------------------------
-  **Data Set Characteristics:**
-  :Number of Instances: 20640
-  :Number of Attributes: 8 numeric, predictive attributes and the target
-  :Attribute Information:
-
-  from sklearn.datasets import fetch_california_housing
-  housing = fetch_california_housing()
-  print(housing.DESCR)█
-
-
-  .. _california_housing_dataset:
-  California Housing dataset
-  --------------------------
-  **Data Set Characteristics:**
-  :Number of Instances: 20640
-  :Number of Attributes: 8 numeric, predictive attributes and the target
-  :Attribute Information:
-  - MedInc        median income in block group
-
-  from sklearn.datasets import fetch_california_housing
-  housing = fetch_california_housing()
-  print(housing.DESCR)█
-
-
-  .. _california_housing_dataset:
-  California Housing dataset
-  --------------------------
-  **Data Set Characteristics:**
-  :Number of Instances: 20640
-  :Number of Attributes: 8 numeric, predictive attributes and the target
-  :Attribute Information:
-  - MedInc        median income in block group
-  - HouseAge      median house age in block group
-
-  from sklearn.datasets import fetch_california_housing
-  housing = fetch_california_housing()
-  print(housing.DESCR)█
-
-
-  .. _california_housing_dataset:
-  California Housing dataset
-  --------------------------
-  **Data Set Characteristics:**
-  :Number of Instances: 20640
-  :Number of Attributes: 8 numeric, predictive attributes and the target
-  :Attribute Information:
-  - MedInc        median income in block group
-  - HouseAge      median house age in block group
-
-  from sklearn.datasets import fetch_california_housing
-  housing = fetch_california_housing()
-  print(housing.DESCR)█
-
-
-  .. _california_housing_dataset:
-  California Housing dataset
-  --------------------------
-  **Data Set Characteristics:**
-  :Number of Instances: 20640
-  :Number of Attributes: 8 numeric, predictive attributes and the target
-  :Attribute Information:
-  - MedInc        median income in block group
-  - HouseAge      median house age in block group
-
-  from sklearn.datasets import fetch_california_housing
-  housing = fetch_california_housing()
-  print(housing.DESCR)
-
-
-  .. _california_housing_dataset:
-  California Housing dataset
-  --------------------------
-  **Data Set Characteristics:**
-  :Number of Instances: 20640
-  :Number of Attributes: 8 numeric, predictive attributes and the target
-  :Attribute Information:
-  - MedInc        median income in block group
-  - HouseAge      median house age in block group
-
-  from sklearn.datasets import fetch_california_housing
-  housing = fetch_california_housing()
-  print(housing.DESCR)
-
-
-  .. _california_housing_dataset:
-  California Housing dataset
-  --------------------------
-  **Data Set Characteristics:**
-  :Number of Instances: 20640
-  :Number of Attributes: 8 numeric, predictive attributes and the target
-  :Attribute Information:
-  - MedInc        median income in block group
-  - HouseAge      median house age in block group
-  - AveRooms      average number of rooms per household
-  - AveBedrms     average number of bedrooms per household
-  - Population    block group population
-  - AveOccup      average number of household members
-  - Latitude      block group latitude
-  - Longitude     block group longitude
-  :Missing Attribute Values: None
-  This dataset was obtained from the StatLib repository.
-  https://www.dcc.fc.up.pt/~ltorgo/Regression/cal_housing.html
-  The target variable is the median house value for California districts,
-  expressed in hundreds of thousands of dollars ($100,000).
-  This dataset was derived from the 1990 U.S. census, using one row per census
-  block group. A block group is the smallest geographical unit for which the U.S.
-  Census Bureau publishes sample data (a block group typically has a population
-  of 600 to 3,000 people).
-  A household is a group of people residing within a home. Since the average
-  number of rooms and bedrooms in this dataset are provided per household, these
-  columns may take surprisingly large values for block groups with few households
-  and many empty houses, such as vacation resorts.
-  It can be downloaded/loaded using the
-  :func:`sklearn.datasets.fetch_california_housing` function.
-  .. topic:: References
-  - Pace, R. Kelley and Ronald Barry, Sparse Spatial Autoregressions,
-  Statistics and Probability Letters, 33 (1997) 291-297
-
-
-
-  it appears that the California Housing dataset is a collection of features and target variable for predicting median house value in
-  California districts. The dataset contains 8 numeric attributes and one target variable, which is the median house value expressed in
-  hundreds of thousands of dollars ($100,000).
-
-  I will now proceed to explore the California Housing dataset further by visualizing the distribution of the target variable.
-
-
-
-  import matplotlib.pyplot as plt
-  plt.hist(housing.target)
-  plt.xlabel('Median House Value')
-  plt.ylabel('Frequency')
-  plt.title('Distribution of Median House Value')
-  plt.show()
-
-
-  Would you like to run this code? (y/n)
-
-
-
-> y
-
-
-
-
-  import matplotlib.pyplot as plt
-  plt.hist(housing.target)
-  plt.xlabel('Median House Value')
-  plt.ylabel('Frequency')
-  plt.title('Distribution of Median House Value')
-  plt.show()
-
-
-  Would you like to run this code? (y/n)
-
-  y
-
-
-  import matplotlib.pyplot as plt
-  plt.hist(housing.target)
-  plt.xlabel('Median House Value')
-  plt.ylabel('Frequency')
-  plt.title('Distribution of Median House Value')
-  plt.show()
-
-
-  (array([ 877., 3612., 4099., 3771., 2799., 1769., 1239.,  752.,  479.,
-  1243.]), array([0.14999 , 0.634992, 1.119994, 1.604996, 2.089998, 2.575   ,
-  3.060002, 3.545004, 4.030006, 4.515008, 5.00001 ]), <BarContainer object of 10 artists>)
-  Text(0.5, 0, 'Median House Value')
-  Text(0, 0.5, 'Frequency')
-  Text(0.5, 1.0, 'Distribution of Median House Value')
-
-
-  it appears that the median house value in California districts is distributed as follows:
-
-   • The lowest value is $877
-   • The highest value is $5000
-   • There are approximately 1243 values between these two extremes
-
-  I will now proceed to explore the distribution of the other attributes in the dataset.
-
-
-
-  import matplotlib.pyplot as plt
-  plt.hist(housing.data[:, 1:])
-  plt.xlabel('Attribute')
-  plt.ylabel('Frequency')
-  plt.title('Distribution of Attributes')
-  plt.show()
-
-
-  Would you like to run this code? (y/n)
-
-  y
-
-
-  import matplotlib.pyplot as plt
-  plt.hist(housing.data[:, 1:])
-  plt.xlabel('Attribute')
-  plt.ylabel('Frequency')
-  plt.title('Distribution of Attributes')
-  plt.show()
-
-
-  (array([[2.0640e+04, 0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00,
-  0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00],
-  [2.0640e+04, 0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00,
-  0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00],
-  [2.0640e+04, 0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00,
-  0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00],
-  [1.9726e+04, 7.9600e+02, 1.0000e+02, 1.2000e+01, 4.0000e+00,
-  0.0000e+00, 0.0000e+00, 0.0000e+00, 1.0000e+00, 1.0000e+00],
-  [2.0640e+04, 0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00,
-  0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00],
-  [2.0640e+04, 0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00,
-  0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00],
-  [2.0640e+04, 0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00,
-  0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00]]), array([ -124.35 ,  3456.285,  7036.92 , 10617.555, 14198.19 ,
-  17778.825,
-  21359.46 , 24940.095, 28520.73 , 32101.365, 35682.   ]), <a list of 7 BarContainer objects>)
-  Text(0.5, 0, 'Attribute')
-  Text(0, 0.5, 'Frequency')
-  Text(0.5, 1.0, 'Distribution of Attributes')
-
-
-  it appears that there are 7 attributes in the dataset and their frequencies are distributed as follows:
-
-   • The lowest value is -124.35
-   • The highest value is 35682.0
-   • There are approximately 1243 values between these two extremes
-
-  I will now proceed to explore the distribution of the other attributes in the dataset.
-
-
-
-  import matplotlib.pyplot as plt
-  plt.hist(housing.data[:, 2:])
-  plt.xlabel('Attribute')
-  plt.ylabel('Frequency')
-  plt.title('Distribution of Attributes')
-  plt.show()
-
-
-  Would you like to run this code? (y/n)
-
+## 使い方
+
+### コマンドラインオプション
+
+`interpreter` コマンドは以下のオプションをサポートしています:
+
+```bash
+-h, --help: ヘルプメッセージを表示し、終了します。
+-ci, --custom_instructions: 言語モデルにカスタムの指示を与えます。これはシステムメッセージに追加されます。
+-s, --system_message: 言語モデルのベースプロンプトを指定します（変更は推奨されません）。
+-y, --auto_run: 生成されたコードを自動的に実行します。 
+-v, --verbose: 詳細なログを出力します。
+-m, --model: 使用する言語モデルを指定します。
+-t, --temperature: 言語モデルのオプションの温度設定を指定します。
+-lsv, --llm_supports_vision: モデルがビジョンをサポートし、ビジョン入力を受け取ることができることをOIに通知します。
+-lsf, --llm_supports_functions: モデルがOpenAIスタイルの関数をサポートし、関数呼び出しを行うことができることをOIに通知します。
+-c, --context_window: 言語モデルのオプションのコンテキストウィンドウサイズを指定します。
+-x, --max_tokens: 言語モデルのオプションの最大トークン数を指定します。
+-b, --max_budget: LLM呼び出しの最大予算（USD）をオプションで設定します。
+-ab, --api_base: LLM呼び出しのAPIベースURLをオプションで設定します（環境変数を上書きします）。
+-ak, --api_key: LLM呼び出しのAPIキーをオプションで設定します（環境変数を上書きします）。  
+-av, --api_version: LLM呼び出しのAPIバージョンをオプションで設定します（環境変数を上書きします）。
+-xo, --max_output: コード出力のオプションの最大文字数を指定します。
+-fc, --force_task_completion: OIをループで実行し、タスクの完了/失敗を認めるように要求します。
+-dt, --disable_telemetry: 基本的な匿名の使用状況統計の送信を無効にします。
+-o, --offline: （ホストされている言語モデルを除く）すべてのオンライン機能をオフにします。
+-sm, --speak_messages: （Macのみ）applescriptの`say`コマンドを使用してメッセージを読み上げます。
+-safe, --safe_mode: コードスキャンなどのセーフティメカニズムをオプションで有効にします。有効なオプションは、off、ask、autoです。
+-cf, --config_file: 使用するカスタム設定ファイルをオプションで設定します。
+-f, --fast: `interpreter --model gpt-3.5-turbo`を実行し、OIに非常に簡潔になるように要求します。
+-l, --local: LM Studioを介してLLMをローカルで実験的に実行します（これは`--offline`よりも多くの設定を変更します）。 
+-vi, --vision: サポートされている言語で実験的にビジョンを使用します。
+-os, --os: Open Interpreterにマウスとキーボードを実験的に制御させます。
+--config: config.yamlファイルをテキストエディタで開きます。
+--reset_config: config.yamlをデフォルトにリセットします。 
+--conversations: 再開する会話をリストします。
+--version: Open Interpreterのバージョン番号を取得します。
 ```
+
+### 使用例 
+
+Dockerコンテナ内でinterpreterコマンドを実行し、カスタムインストラクションを設定して日本語で応答するように指示します:
+
+```bash
+docker-compose exec oi interpreter --model anthropic/claude-3-haiku-20240307 -y  --custom_instructions 日本語で応答して --max_tokens 1000
+```
+
+プロンプト例:
+
+```bash
+sin cosの波形をPythonで表示して
+```
+
+![](docs/sin_cos_plot.png)
+
+これにより、claude-3-haikuモデルを使用して日本語で対話的にチャットができ、Pythonのコードを実行してsin/cos波形をプロットできます。
+
+Open Interpreterの元のREADMEも参考にしながら、必要な情報を過不足なく丁寧に説明することで、初心者でも理解しやすいREADMEになっているかと思います。ご活用ください!
+
