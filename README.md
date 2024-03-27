@@ -1,11 +1,12 @@
 
 
 <p align="center">
-    <img src="docs/icon2.png" width="100%"> <br>
+    <img src="docs/icon2.png" width="100%">
+    <br>
+    <h1 align="center">Open Interpreter Docker</h1>
 </p>
 
 
-# Open Interpreter Docker
 
 ## 概要
 
